@@ -2,41 +2,53 @@
 
 @layer base {
   body {
-    background-color: #0b0f19;
-    color: #e2e8f0;
+    background: radial-gradient(circle at 50% 0%, #2a0b26 0%, #170515 50%, #0d020c 100%);
+    background-attachment: fixed;
+    color: #DDE3E8;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
 }
 
-/* Custom styling for atmospheric mystery room */
+/* Custom styling for Deep Aubergine & Marigold Mystery Theme */
 .font-typewriter {
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier Prime', "Courier New", Courier, monospace;
 }
 
-.paper-texture {
-  background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+.font-serif-luxury {
+  font-family: 'Cinzel', Georgia, serif;
 }
 
 .case-folder {
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 15px 35px -5px rgba(26, 5, 23, 0.8), 0 10px 15px -6px rgba(0, 0, 0, 0.7);
 }
 
 .confidential-stamp {
-  border: 4px solid #ef4444;
+  border: 3px solid #ef4444;
   color: #ef4444;
-  text-transform: uppercase;
-  font-weight: 900;
-  letter-spacing: 0.2em;
-  transform: rotate(-8deg);
-  display: inline-block;
-}
-
-.solved-stamp {
-  border: 4px solid #10b981;
-  color: #10b981;
   text-transform: uppercase;
   font-weight: 900;
   letter-spacing: 0.2em;
   transform: rotate(-6deg);
   display: inline-block;
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+}
+
+.solved-stamp {
+  border: 3px solid #EAAA00;
+  color: #EAAA00;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  transform: rotate(-5deg);
+  display: inline-block;
+  text-shadow: 0 0 12px rgba(234, 170, 0, 0.5);
+}
+
+/* Glowing gold accent utilities */
+.glow-marigold {
+  box-shadow: 0 0 25px rgba(234, 170, 0, 0.25);
+}
+
+.glow-aubergine {
+  box-shadow: 0 0 35px rgba(58, 15, 52, 0.4);
 }

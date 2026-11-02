@@ -47,6 +47,15 @@ const DIFFICULTY_CONFIG = {
   Hard: { suspects: 5, clues: 9, hints: 3 }
 };
 
+const CURATED_PORTRAITS = [
+  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80'
+];
+
 // Fast and resilient model priority list using current Gemini API models
 const CANDIDATE_MODELS = ['gemini-3.5-flash-lite', 'gemini-3.5-flash', 'gemini-2.5-flash'];
 
@@ -145,7 +154,7 @@ Difficulty: "${difficulty}"`;
         crimeScene: validatedData.crimeScene,
         suspects: validatedData.suspects.map((s, idx) => ({
           ...s,
-          avatarUrl: s.avatarUrl || `https://images.unsplash.com/photo-${1500000000000 + (idx * 1234567)}?w=150`
+          avatarUrl: s.avatarUrl || CURATED_PORTRAITS[idx % CURATED_PORTRAITS.length]
         })),
         clues: validatedData.clues.map(c => ({
           ...c,

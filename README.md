@@ -187,3 +187,4 @@ Open **`http://localhost:5173`** in your browser to start investigating!
 ## 📜 Official Deliverables & Submission
 * **Detailed Specification Sheet**: [`SPEC.md`](SPEC.md)
 * **Submission Form**: [NxtWave Form Link](https://bit.ly/ai-mystery-room-sub-form)
+

@@ -3,15 +3,11 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import confetti from 'canvas-confetti';
 import { 
-  ShieldAlert, 
   Award, 
-  CheckCircle2, 
   XCircle, 
-  RotateCcw, 
   Home, 
   FileCheck, 
-  Search,
-  Sparkles,
+  Sparkles, 
   ArrowRight
 } from 'lucide-react';
 import { sound } from '../utils/audio';
@@ -51,8 +47,8 @@ export default function Results() {
   const triggerConfetti = () => {
     try {
       confetti({
-        particleCount: 80,
-        spread: 70,
+        particleCount: 90,
+        spread: 80,
         origin: { y: 0.6 }
       });
     } catch {
@@ -63,8 +59,8 @@ export default function Results() {
   if (loading) {
     return (
       <div className="min-h-[70vh] flex flex-col items-center justify-center space-y-4">
-        <div className="w-12 h-12 border-4 border-amber-500 border-t-transparent rounded-full animate-spin" />
-        <p className="font-mono text-sm text-amber-400">Summoning magistrate & unsealing verdict...</p>
+        <div className="w-12 h-12 border-4 border-[#EAAA00] border-t-transparent rounded-full animate-spin" />
+        <p className="font-mono text-sm text-[#EAAA00]">Summoning magistrate & unsealing verdict...</p>
       </div>
     );
   }
@@ -73,11 +69,11 @@ export default function Results() {
     return (
       <div className="max-w-xl mx-auto my-20 p-8 rounded-2xl bg-red-950/40 border border-red-800 text-center space-y-4">
         <XCircle className="w-10 h-10 text-red-400 mx-auto" />
-        <h2 className="text-xl font-bold font-serif text-slate-100">Dossier Sealed</h2>
-        <p className="text-sm text-slate-300 font-mono">{error || "Case is still under active investigation."}</p>
+        <h2 className="text-xl font-bold font-serif text-[#DDE3E8]">Dossier Sealed</h2>
+        <p className="text-sm text-[#DDE3E8]/80 font-mono">{error || "Case is still under active investigation."}</p>
         <button
           onClick={() => navigate(`/cases/${id}`)}
-          className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-mono font-bold uppercase rounded-lg"
+          className="px-4 py-2 bg-[#EAAA00] hover:bg-[#F5B81C] text-[#120310] text-xs font-mono font-bold uppercase rounded-lg"
         >
           Return to Investigation Room
         </button>
@@ -100,8 +96,8 @@ export default function Results() {
       {/* Dramatic Verdict Banner */}
       <div className={`p-8 sm:p-12 rounded-3xl border-2 text-center space-y-6 relative overflow-hidden shadow-2xl ${
         isCorrect 
-          ? 'border-emerald-500/60 bg-gradient-to-b from-emerald-950/40 to-slate-950' 
-          : 'border-red-500/60 bg-gradient-to-b from-red-950/40 to-slate-950'
+          ? 'border-[#EAAA00]/60 bg-gradient-to-b from-[#3A0F34]/90 to-[#140412]' 
+          : 'border-red-500/60 bg-gradient-to-b from-red-950/40 to-[#140412]'
       }`}>
         
         {/* Rubber Stamp Badge */}
@@ -112,10 +108,10 @@ export default function Results() {
         </div>
 
         <div className="space-y-2 max-w-xl mx-auto">
-          <h1 className="text-2xl sm:text-4xl font-serif font-bold text-slate-100">
+          <h1 className="text-2xl sm:text-4xl font-serif font-bold text-[#DDE3E8]">
             {caseData.title}
           </h1>
-          <p className="text-sm text-slate-300 font-sans">
+          <p className="text-sm text-[#DDE3E8]/80 font-sans">
             {isCorrect 
               ? "Your inductive reasoning was impeccable. The suspect confessed under the weight of forensic evidence." 
               : "The accused suspect possessed an ironclad defense. The true culprit slipped through the dragnet."}
@@ -123,80 +119,80 @@ export default function Results() {
         </div>
 
         {/* Detective Rank Certificate Badge */}
-        <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-2xl bg-slate-900/90 border border-amber-500/30">
-          <Award className="w-5 h-5 text-amber-400" />
+        <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-2xl bg-[#1E071B] border border-[#EAAA00]/40 shadow-lg">
+          <Award className="w-5 h-5 text-[#EAAA00]" />
           <div className="text-left font-mono">
-            <span className="text-[10px] text-slate-400 block uppercase">COMMISSIONED RANK</span>
-            <span className="text-sm font-bold text-amber-300">{rank}</span>
+            <span className="text-[10px] text-[#DDE3E8]/60 block uppercase">COMMISSIONED RANK</span>
+            <span className="text-sm font-bold text-[#EAAA00]">{rank}</span>
           </div>
         </div>
       </div>
 
       {/* Score Ledger & Breakdown */}
-      <div className="p-6 sm:p-8 rounded-3xl border border-slate-800 bg-slate-900/60 space-y-5">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+      <div className="p-6 sm:p-8 rounded-3xl border border-[#3A0F34] bg-[#1A0517]/80 space-y-5 shadow-lg">
+        <div className="flex items-center justify-between border-b border-[#3A0F34] pb-4">
           <div className="flex items-center gap-2">
-            <FileCheck className="w-5 h-5 text-amber-400" />
-            <h3 className="font-bold text-base font-serif text-slate-100">Forensic Performance Ledger</h3>
+            <FileCheck className="w-5 h-5 text-[#EAAA00]" />
+            <h3 className="font-bold text-base font-serif text-[#DDE3E8]">Forensic Performance Ledger</h3>
           </div>
-          <span className="text-xs font-mono text-slate-400">CASE ID: {id}</span>
+          <span className="text-xs font-mono text-[#DDE3E8]/60">CASE ID: {id}</span>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-          <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
-            <span className="text-[10px] text-slate-400 font-mono block">ACCUSATION VERDICT</span>
+          <div className="p-4 rounded-xl bg-[#120310] border border-[#3A0F34]">
+            <span className="text-[10px] text-[#DDE3E8]/60 font-mono block">ACCUSATION VERDICT</span>
             <span className={`text-base font-bold font-mono ${isCorrect ? 'text-emerald-400' : 'text-red-400'}`}>
               {isCorrect ? "+100% BASE" : "0 BASE"}
             </span>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
-            <span className="text-[10px] text-slate-400 font-mono block">CLUES UNCOVERED</span>
-            <span className="text-base font-bold font-mono text-emerald-400">
-              +{cluesFound * 5} <span className="text-xs text-slate-500">({cluesFound}x5)</span>
+          <div className="p-4 rounded-xl bg-[#120310] border border-[#3A0F34]">
+            <span className="text-[10px] text-[#DDE3E8]/60 font-mono block">CLUES UNCOVERED</span>
+            <span className="text-base font-bold font-mono text-[#EAAA00]">
+              +{cluesFound * 5} <span className="text-xs text-[#DDE3E8]/50">({cluesFound}x5)</span>
             </span>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
-            <span className="text-[10px] text-slate-400 font-mono block">HINT PENALTIES</span>
-            <span className="text-base font-bold font-mono text-amber-400">
-              -{hintsUsed * 10} <span className="text-xs text-slate-500">({hintsUsed}x10)</span>
+          <div className="p-4 rounded-xl bg-[#120310] border border-[#3A0F34]">
+            <span className="text-[10px] text-[#DDE3E8]/60 font-mono block">HINT PENALTIES</span>
+            <span className="text-base font-bold font-mono text-red-400">
+              -{hintsUsed * 10} <span className="text-xs text-[#DDE3E8]/50">({hintsUsed}x10)</span>
             </span>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-950/80 border border-emerald-500/40">
-            <span className="text-[10px] text-slate-400 font-mono block">FINAL SCORE</span>
-            <span className="text-2xl font-bold font-mono text-emerald-400">
-              {score} <span className="text-xs text-slate-400">pts</span>
+          <div className="p-4 rounded-xl bg-[#120310] border border-[#EAAA00]/40">
+            <span className="text-[10px] text-[#DDE3E8]/60 font-mono block">FINAL SCORE</span>
+            <span className="text-2xl font-bold font-mono text-[#EAAA00]">
+              {score} <span className="text-xs text-[#DDE3E8]/60 font-normal">pts</span>
             </span>
           </div>
         </div>
       </div>
 
       {/* The Full Truth & Solution Unveiled */}
-      <div className="p-6 sm:p-8 rounded-3xl border border-amber-500/30 bg-slate-900/60 space-y-6">
+      <div className="p-6 sm:p-8 rounded-3xl border border-[#EAAA00]/30 bg-[#1A0517]/80 space-y-6 shadow-lg">
         <div className="flex items-center gap-2">
-          <Sparkles className="w-5 h-5 text-amber-400" />
-          <h3 className="font-bold text-lg font-serif text-slate-100">The Unvarnished Truth</h3>
+          <Sparkles className="w-5 h-5 text-[#EAAA00]" />
+          <h3 className="font-bold text-lg font-serif text-[#DDE3E8]">The Unvarnished Truth</h3>
         </div>
 
         {culprit && (
           <div className="space-y-4">
-            <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between">
+            <div className="p-4 rounded-2xl bg-[#EAAA00]/10 border border-[#EAAA00]/30 flex items-center justify-between">
               <div>
-                <span className="text-[10px] font-mono text-amber-400 uppercase tracking-widest block">TRUE CULPRIT</span>
-                <h4 className="text-xl font-bold font-serif text-amber-200">{culprit.culpritName}</h4>
+                <span className="text-[10px] font-mono text-[#EAAA00] uppercase tracking-widest block">TRUE CULPRIT</span>
+                <h4 className="text-xl font-bold font-serif text-[#EAAA00]">{culprit.culpritName}</h4>
               </div>
-              <span className="text-xs font-mono text-amber-400 px-3 py-1 bg-amber-950/80 border border-amber-500/40 rounded-full">
+              <span className="text-xs font-mono text-[#EAAA00] px-3 py-1 bg-[#3A0F34]/80 border border-[#EAAA00]/40 rounded-full">
                 ID: {culprit.culpritId}
               </span>
             </div>
 
             <div className="space-y-2">
-              <span className="text-xs font-mono uppercase text-slate-400 tracking-wider">
+              <span className="text-xs font-mono uppercase text-[#DDE3E8]/60 tracking-wider">
                 Full Execution & Explanation:
               </span>
-              <p className="text-sm text-slate-300 leading-relaxed font-sans bg-slate-950/80 p-5 rounded-2xl border border-slate-800">
+              <p className="text-sm text-[#DDE3E8]/90 leading-relaxed font-sans bg-[#120310] p-5 rounded-2xl border border-[#3A0F34]">
                 {culprit.explanation}
               </p>
             </div>
@@ -205,12 +201,12 @@ export default function Results() {
 
         {/* Player's Accusation Memo */}
         {accusation && (
-          <div className="border-t border-slate-800 pt-4 space-y-2 text-xs font-mono">
-            <span className="text-slate-400 uppercase block">Your Submitted Indictment:</span>
-            <p className="text-slate-300 italic bg-slate-950/40 p-3 rounded-xl border border-slate-800">
+          <div className="border-t border-[#3A0F34] pt-4 space-y-2 text-xs font-mono">
+            <span className="text-[#DDE3E8]/60 uppercase block">Your Submitted Indictment:</span>
+            <p className="text-[#DDE3E8] italic bg-[#120310] p-3 rounded-xl border border-[#3A0F34]">
               Accused: <strong>{accusation.suspectName}</strong> ({accusation.suspectId})
               {accusation.reasoning && (
-                <span className="block mt-1 text-slate-400">Reasoning: "{accusation.reasoning}"</span>
+                <span className="block mt-1 text-[#DDE3E8]/70">Reasoning: "{accusation.reasoning}"</span>
               )}
             </p>
           </div>
@@ -218,11 +214,11 @@ export default function Results() {
       </div>
 
       {/* Action Navigation */}
-      <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-800">
+      <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[#3A0F34]">
         <Link
           to="/"
           onClick={() => sound.playTypewriterClick()}
-          className="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-slate-300 font-semibold text-xs uppercase tracking-wider rounded-xl transition flex items-center gap-2 border border-slate-800"
+          className="px-6 py-3 bg-[#240820] hover:bg-[#300B2B] text-[#DDE3E8] font-semibold text-xs uppercase tracking-wider rounded-xl transition flex items-center gap-2 border border-[#3A0F34]"
         >
           <Home className="w-4 h-4" />
           <span>Bureau Headquarters</span>
@@ -231,7 +227,7 @@ export default function Results() {
         <Link
           to="/create"
           onClick={() => sound.playTypewriterClick()}
-          className="px-7 py-3 bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold text-xs uppercase tracking-widest rounded-xl transition shadow-xl shadow-amber-500/20 flex items-center gap-2"
+          className="px-7 py-3 bg-gradient-to-r from-[#EAAA00] to-[#D49800] hover:from-[#F5B81C] hover:to-[#EAAA00] text-[#120310] font-bold text-xs uppercase tracking-widest rounded-xl transition shadow-xl shadow-[#EAAA00]/20 flex items-center gap-2"
         >
           <Sparkles className="w-4 h-4" />
           <span>Investigate Another Mystery</span>
